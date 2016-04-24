@@ -1,0 +1,20 @@
+<h1>Your Profile Page</h1>
+<% current_user.forums.each do |forum| %>
+    <div class="col-md-12">
+        <div class="panel panel-default">
+
+        <div class="panel-heading">
+           <%= link_to forum.title, forum %>
+        </div>
+        <div class="panel-body">
+            <p><span class="posted-at"><%= forum.created_at.strftime ('%m/%d/%Y at %l:%M%p') %></span></p>
+            <p><%= forum.entry[0..150] %>...<%= link_to "Read More", forum %></p>
+        </div>
+
+    <div class="panel-footer">
+        <%= link_to 'Edit', edit_forum_path(forum), class: "btn btn-warning" %>
+        <%= link_to 'Destroy', forum, method: :delete, data: {confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+        </div>
+        </div>
+    </div>
+    <% end %>

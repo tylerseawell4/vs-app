@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Merches</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Price</th>
+      <th>Size</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @merches.each do |merch| %>
+      <tr>
+        <td><%= merch.item %></td>
+        <td><%= number_to_currency merch.price %></td>
+        <td><%= merch.size %></td>
+        <%= image_tag merch.avatar.url(:medium), class: "img-responsive" %>
+        <td><%= link_to 'Show', merch %></td>
+        <td><%= link_to 'Edit', edit_merch_path(merch) %></td>
+        <td><%= link_to 'Destroy', merch, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<ul class="nav nav-pills" role="tablist">
+  <li><%= link_to "All", merches_path %></li>
+  <% @merch_type.each do |t| %>
+    <li><%= link_to "#{t.item}", controller: "merches", item: "#{t.item}" %></li>
+  <% end %>
+  </u>
+
+
+<%= link_to 'New Merch', new_merch_path %>

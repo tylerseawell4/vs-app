@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Destiny</h1>
+
+<%= link_to 'Add New Activity', new_community_path, class:'btn btn-warning' %>
+
+
+   <ul class="nav nav-tabs">
+  <li role="presentation" class="active"><%= link_to "All", communities_path %></li>
+  <li role="presentation" class="dropdown">
+   <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+     Activities <span class="caret"></span>
+   </a>
+   <ul class="dropdown-menu">
+  <% @games.each do |game| %>
+  <%= link_to game.game_title, communities_path(game_id: game.id)%>
+  <% end %>
+</ul>
+</li>
+</ul>
+ <div class="row">
+    <% @communities.each do |community| %>
+      <div class="col-md-4">
+      <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4><strong><%= community.activity %></h4></strong>
+         <p>Posted at: <span class="posted-at"><%= community.created_at.strftime ('%m/%d/%Y at %l:%M%p') %></span></p>
+        </div>
+        <div class="panel-body">
+        <p><strong>Gamertag: </strong><%= community.gamertag %></p>
+        <p><strong>Description: </strong><%= community.description %></p>
+                </div>
+        
+          <% if current_user.id == community.user.id %>
+          <div class="panel-footer">
+        <%= link_to 'Edit', edit_community_path(community), class: "btn btn-default" %>
+        <%= link_to 'Destroy', community, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+     </div>
+     <% end %>
+     </div>
+     </div>
+    <% end %>
+    </div>
+        

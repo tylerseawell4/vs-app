@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @merch.item %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @merch.price %>
+</p>
+
+<p>
+  <strong>Size:</strong>
+  <%= @merch.size %>
+</p>
+<p>
+<%= image_tag @merch.avatar.url(:medium) %>
+</p>
+
+<%= link_to 'Edit', edit_merch_path(@merch) %> |
+<%= link_to 'Back', merches_path %>

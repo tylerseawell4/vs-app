@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<div class ="panel panel-default">
+  <div class="panel-heading">
+    <h3><strong><%= @forum.title %></strong></h3>
+     by <strong><%= link_to @forum.user.username, user_posts_path(id: @forum.user.id) %></strong> <span class="posted-at"> posted at: <%= @forum.created_at.strftime('%m/%d/%Y %I:%M%p') %></span><br />
+  </div>
+<div class = "panel-body">
+  <p><%= @forum.entry %></p>
+  </div>
+  </div>
+  
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Responses</h4>
+    </div>
+<% @forum.comments.each do |comment| %>
+<div class="panel-body">
+  <p><strong><%= link_to comment.user.username, user_posts_path(id: comment.user.id) %></strong> said: </p>
+  <div class="container">
+  <p><%= comment.comment_entry %></p>
+  <p><span class="posted-at"><%= comment.created_at.strftime('%m/%d/%Y %I:%M%p') %></span></p>
+  </div>
+  </div>
+
+<% end %>
+      
+      
+  <div class="panel panel-default">
+    <div class = "panel-heading">
+      <strong>Respond to Forum</strong>
+    </div>
+    <div class ="panel-body">
+      <%= render 'comments/form' %> 
+    </div>
+    
+    <%= link_to 'Back', forums_path, class: "btn btn-warning" %>
+

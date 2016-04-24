@@ -1,0 +1,26 @@
+<h1><%= @user.username %>'s Page</h1>
+
+<div class="row">
+      <% @user.forums.each do |forum| %>
+<div class="col-md-12">
+  <div class="panel panel-default">
+  <div class="panel-heading">
+        <%= link_to forum.title, forum %>
+    </div>
+  <div class="panel-body">
+  by <%= forum.user.username %>
+        <p><span class='posted-at'>posted at: <%= forum.created_at.strftime('%m/%d/%Y at %I:%M%p')%></span></p>
+    <p><%= forum.entry[0..250] %>...[<%= link_to "Read More", forum %>] </p><br />
+    </div>
+    <% if current_user.id == forum.user.id %>
+   <div class="panel-footer">
+   <%= link_to 'Edit', edit_forum_path(forum), class: "btn btn-warning" %>
+   <%= link_to 'Destroy', forum, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+    </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+    <% end %>
+
+</div>
