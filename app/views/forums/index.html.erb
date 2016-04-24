@@ -14,7 +14,7 @@
          <h4><strong><%= link_to forum.title, forum %></strong></h4>
           </div>
           <div class="panel-body">
-        by <strong><%= link_to forum.user.username, user_posts_path(id: forum.user.id) %></strong><br />
+        <p>by <strong><%= link_to forum.user.username, user_posts_path(id: forum.user.id) %></strong></p>
         <p><span class="posted-at"><%= forum.created_at.strftime('%m/%d/%Y %I:%M%p') %></span></p>
         <p><%= forum.entry[0...250]+"..." %></p>
             <%= link_to "Read More", forum %>

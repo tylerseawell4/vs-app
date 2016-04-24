@@ -6,6 +6,45 @@ body {
     background: url(<%= asset_path "bgw.jpg" %>) no-repeat;
     background-size: cover;
 }
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    background: url(<%= asset_path "bggame.jpg" %>) no-repeat;
+    background-size: cover;
+}
+
+.panel-default>.panel-heading {
+    color: white;
+    background: url(<%= asset_path "bggame.jpg" %>) no-repeat;
+
+    border-color: red;
+}
+
+.panel-body{
+    background: #3F3E40;
+}
+
+p {
+    color: white;
+}
+
+a:visited {
+    color: white;
+}
+
+a {
+    color: white;
+}
+
+.white{
+    color: black;
+}
+
+.btn-default {
+    background-color: black;
+}
+.btn-danger {
+    background-color: red;
+}
 .navbar-brand {
     float: left;
     height: 62px;
@@ -24,6 +63,7 @@ body {
 
 .font-change {
       font-family: 'Shadows Into Light';
+      color: white;
       font-size: 20px;
       font-weight: 900;
 }
@@ -31,10 +71,12 @@ body {
 .container {
     margin-top: 10px;
     margin-left: 15px;
+    width: 1325px;
 }
 
+
 .center {
-    margin-left: 175px;
+    margin-top: 50px;
     text-align: center;
     
 }
@@ -49,8 +91,24 @@ body {
 }
 
 .navbar-default .navbar-nav>li>a {
-    color: black;
+    color: white;
     font-weight: 900;
     margin-top: 5px;
     margin-right: 5px;
+}
+
+.nav-tabs>li>a {
+    margin-right: 2px;
+    line-height: 1.42857143;
+    border: 1px solid white;
+    border-radius: 4px 4px 0 0;
+    background: red;
+}
+
+.col-md-3 {
+    padding: 0px;
+}
+
+.col-md-6{
+    padding:0px;
 }
