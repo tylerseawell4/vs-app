@@ -7,23 +7,23 @@
 
 
 <div class='row'>
-    <% @forums.each do |forum| %>
-      <div class="col-md-6">
+    <% @forums.reverse_each do |forum| %>
+      <div class="col-md-11">
         <div class="panel panel-default">
           <div class="panel-heading">
-         <h4><strong><%= link_to forum.title, forum %></strong></h4>
+         <h4><strong><%= link_to forum.title, forum %><sub> (click me)</sub></strong></h4>
           </div>
           <div class="panel-body">
         <p>by <strong><%= link_to forum.user.username, user_posts_path(id: forum.user.id) %></strong></p>
         <p><span class="posted-at"><%= forum.created_at.strftime('%m/%d/%Y %I:%M%p') %></span></p>
-        <p><%= forum.entry[0...250]+"..." %></p>
+        <p><%= forum.entry[0...500]+"..." %></p>
             <%= link_to "Read More", forum %>
         </div>
         
         <% if current_user.id == forum.user.id %>
         <div class="panel-footer">
-        <%= link_to 'Edit', edit_forum_path(forum), class: "btn btn-default" %>
-        <%= link_to 'Destroy', forum, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+        <%= link_to 'Edit', edit_forum_path(forum), class: "btn-sm btn-warning" %>
+        <%= link_to 'Destroy', forum, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-sm btn-danger" %>
       </div>
       <% end %>
       </div>

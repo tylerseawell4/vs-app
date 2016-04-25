@@ -26,11 +26,12 @@
         <p>Posted at: <span class="posted-at"><%= community.created_at.strftime ('%m/%d/%Y at %l:%M%p') %></span></p>
         <p><strong>Gamertag: </strong><%= community.gamertag %></p>
         <p><strong>Description: </strong><%= community.description %></p>
+        <p><%= community.game.game_title %></p>
                 </div>
         
           <% if current_user.id == community.user.id %>
           <div class="panel-footer">
-        <%= link_to 'Edit', edit_community_path(community), class: "btn-sm btn-default" %>
+        <%= link_to 'Edit', edit_community_path(community), class: "btn-sm btn-warning" %>
         <%= link_to 'Destroy', community, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-sm btn-danger" %>
      </div>
      <% end %>
@@ -38,4 +39,5 @@
      </div>
     <% end %>
     </div>
+
         

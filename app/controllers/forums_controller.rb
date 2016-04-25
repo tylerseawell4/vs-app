@@ -12,12 +12,14 @@ end
 
   def index
     @forums = Forum.all
+    
   end
 
   # GET /forums/1
   # GET /forums/1.json
   def show
     @comment = Comment.new
+# @order_comment = Comment.new.order('comments.created_at DESC')
   end
 
   # GET /forums/new

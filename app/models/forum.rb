@@ -1,4 +1,6 @@
 class Forum < ActiveRecord::Base
-    has_many :comments
+      validates :title, presence: true
+      validates :entry, presence: true
+     has_many :comments
     belongs_to :user
 end

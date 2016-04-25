@@ -5,11 +5,12 @@ class CommunitiesController < ApplicationController
   # GET /communities.json
   def index
      if params[:game_id] == nil
-      @communities = Community.all
+      @communities = Community.all.order('communities.created_at DESC')
     elsif params[:game_id] != nil
-      @communities = Community.where(game_id: params[:game_id])
+      @communities = Community.where(game_id: params[:game_id]).order('communities.created_at DESC')
     end
     @games = Game.all.order(:game_title).distinct
+        
   end
 
   # GET /communities/1
@@ -33,7 +34,7 @@ class CommunitiesController < ApplicationController
 
     respond_to do |format|
       if @community.save
-        format.html { redirect_to @community, notice: 'Community was successfully created.' }
+        format.html { redirect_to communities_path, notice: 'Community was successfully created.' }
         format.json { render :show, status: :created, location: @community }
       else
         format.html { render :new }

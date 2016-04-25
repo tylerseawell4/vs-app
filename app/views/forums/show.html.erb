@@ -14,12 +14,17 @@
   <div class="panel-heading">
     <h4>Responses</h4>
     </div>
-<% @forum.comments.each do |comment| %>
+<% @forum.comments.reverse_each do |comment| %>
 <div class="panel-body">
-  <p><strong><%= link_to comment.user.username, user_posts_path(id: comment.user.id) %></strong> said: </p>
+  <li><strong><%= link_to comment.user.username, user_posts_path(id: comment.user.id) %></strong> said: </li>
   <div class="container">
   <p><%= comment.comment_entry %></p>
+  
+  <% if current_user.id == comment.user.id %>
   <p><span class="posted-at"><%= comment.created_at.strftime('%m/%d/%Y %I:%M%p') %></span></p>
+  <%= link_to 'Edit', edit_comment_path(comment), class: "btn-sm btn-warning" %>
+  <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-sm btn-danger" %>
+  <% end %>
   </div>
   </div>
 
