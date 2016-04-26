@@ -1,5 +1,6 @@
- <div class="center">
- <%=link_to image_tag("logo.png") %>
+ <div class="center row">
+   <div class="col-xs-12">
+ <%= image_tag "logo.png", class: "img-responsive center-block" %>
 
 <h3>Log in</h3>
 
@@ -25,4 +26,5 @@
     <%= f.submit "Log in" %>
   </div>
 <% end %>
+</div>
 </div>
