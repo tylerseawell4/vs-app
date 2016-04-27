@@ -1,22 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+ <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+      <div class="panel-heading">
   <strong>Item:</strong>
   <%= @merch.item %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @merch.price %>
-</p>
-
-<p>
+      </div>
+    <div class="panel-body">
+  <p><strong>Price:</strong>
+  <%= number_to_currency @merch.price %>
   <strong>Size:</strong>
-  <%= @merch.size %>
-</p>
-<p>
-<%= image_tag @merch.avatar.url(:medium) %>
-</p>
+  <%= @merch.size %> </p>
+<center><%= image_tag @merch.avatar.url(:medium) %></center>
+    </div>
+</div>
 
-<%= link_to 'Edit', edit_merch_path(@merch) %> |
-<%= link_to 'Back', merches_path %>
+
+<%= link_to 'Edit', edit_merch_path(@merch), class: "btn btn-warning" %> |
+<%= link_to 'Back', merches_path, class: "btn btn-danger" %>
